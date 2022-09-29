@@ -26,7 +26,7 @@ return (
           {loading ? (
           <img src={loader} alt="Loading..." className={style.loader} />
         ): typeof currentVideogames[0] === "object" ? (
-          <div className={style.cards}>{console.log("current Videogames objet")}
+          <div className={style.cards}>
            {currentVideogames &&
             currentVideogames.map((vg) => 
                   <Videogame 
@@ -42,7 +42,7 @@ return (
               }
              </div>
              ):(
-              submit==="Not Found"?<div className={style.notFound}>{console.log("Submit nada")}
+              submit==="Not Found"?<div className={style.notFound}>
                             <img
                               src={notFound}
                               alt="Videogame Not Found"
@@ -50,7 +50,7 @@ return (
                               height="400px"
                             />
                           </div>
-                          :console.log("Submit Vacio?")
+                          :null
             )}
            <Pagination
             className={style.pagination}
