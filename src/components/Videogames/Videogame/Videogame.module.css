@@ -1,0 +1,87 @@
+.videogame {
+    margin-top: 1rem;
+    padding: 2rem 0.5rem 0.5rem 0.5rem;
+    width: 15.1rem;
+    height: 15.5rem;
+    border-radius: 20px;
+
+    background: linear-gradient(
+      180deg,
+      rgba(241, 204, 161, 0.733) 0%,
+      rgba(201, 117, 60, 0.644) 100%
+    );
+    backdrop-filter: blur(2rem);
+    box-shadow: 0px 0px 8px 2px rgba(63, 18, 15, 0.774);
+    border: 1px solid rgba(0, 0, 0, 0.8);
+    transition: all 0.25s ease-in-out;
+  }
+  .videogame:hover {
+    transform: translateY(0.75rem);
+  }
+  .edit{
+    top:10px;
+    left:-10px;
+    position:absolute;
+  }
+  .db{
+    top:0;
+    left:0;
+    position:absolute;
+    border-radius: 0.4rem;
+    background: linear-gradient(
+    180deg,
+    rgb(158, 133, 95) 0%,
+    rgba(71, 35, 15, 0.71) 100%
+    );
+    color: rgba(231, 227, 216, 0.747);
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 2;
+  }
+  .link {
+    color: antiquewhite;
+    text-decoration: none;
+    font-size: small;
+  }
+  .title {
+    position:fixed;
+    top:8.5rem;
+    left:0.25rem;
+    margin: 0.25rem;
+    text-align:center;
+  }
+  .img {
+    position:fixed;
+    width: 10rem;
+    top:1.3rem;
+    left:2rem;
+    box-shadow: 0px 0px 8px 2px rgba(63, 18, 15, 0.774);
+    border-radius: 0.5rem;
+  }
+  .types {
+    position:relative;
+    top:9.7rem;
+    left:.7rem;
+    display: inline-block;
+    margin: 0rem 0.15rem 0rem 0.15rem;
+    font-size: smaller;
+    padding: 0rem 0.3rem;
+    border-radius: 10px;
+    background-color: rgba(235, 98, 35, 0.459);
+    width: fit-content;
+  }
+  .rating{
+    position:fixed;
+    width: 3rem;
+    top:0.5rem;
+    right:0.5rem;
+    display: flex;
+    justify-content: flex-end;
+  }
+  .ratingText{
+    width: 2.2rem;
+    background-color: rgb(175, 84, 84);
+    border-radius: 8px;
+    font-size: 13px;
+    padding: 3px;
+  }

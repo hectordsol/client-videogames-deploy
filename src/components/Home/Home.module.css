@@ -1,0 +1,284 @@
+html body {
+    background: url("../../Images/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100%;
+    width: 100%;
+}
+html{
+    height: 100%;
+}
+.nav{
+    grid-area: nav;
+}
+.searchContainer{
+    grid-area:searchContainer;
+    position:fixed;
+    top:2.3rem;
+    right: 0;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-image: url("../../Images/background1.jpg"); 
+    z-index: 1;
+}
+.videogames{
+    grid-area: videogames;
+}
+.container {
+    display: grid;
+    grid-template: 
+    "nav"  2.4rem
+    "searchContainer" 9rem
+    "videogames" auto;
+}
+.search {
+    display: flex;
+    background-repeat: no-repeat;
+    backdrop-filter: blur(2rem);
+    background-image: url("../../Images/background1.jpg"); 
+    z-index: 1;
+    min-width: 350px;
+}
+.nada{
+    grid-area:nada;
+}
+.titleContainer{
+display:flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+
+ .title {
+    top:0;
+    color:rgb(250, 241, 228);
+    position: relative;
+    justify-content: flex-start;
+    font-weight: bold;
+    font-size: 1.3rem;
+}
+.title:before{
+ position: absolute;
+ content: attr(data-text);
+ text-shadow: 0px 0px 20px var(rgb(250, 241, 228));
+ filter: blur(10px) brightness(0);
+ animation: flicker 3s linear forwards;
+ animation-delay: 3s;
+}
+@keyframes flicker{
+    0%{
+        filter: blur(5px) brightness(1);
+    }
+    5%{
+        filter: blur(5px) brightness(0);
+    }
+    7%{
+        filter: blur(5px) brightness(0);
+    }
+    8%{
+        filter: blur(5px) brightness(1);
+    }
+    9%{
+        filter: blur(5px) brightness(0);
+    }
+    10%{
+        filter: blur(5px) brightness(1);
+    }
+    15%{
+        filter: blur(5px) brightness(0);
+    }
+    25%{
+        filter: blur(5px) brightness(1);
+    }
+    50%{
+        filter: blur(5px) brightness(1);
+    }
+    70%{
+        filter: blur(5px) brightness(1);
+    }
+    100%{ 
+        filter: blur(5px) brightness(1);
+    }
+}
+
+
+.iconCreate{
+    text-decoration: none;
+    color: rgba(231, 227, 216, 0.747);
+}
+.labelCreate{
+    color: rgba(231, 227, 216, 0.747);
+    cursor: pointer;
+    text-decoration: none;
+}
+.inputSearch{
+    border-radius: 0.25rem;
+    border: 1px solid rgba(245, 222, 179, 0.295);
+    color: rgba(231, 227, 216, 0.747);
+    font-size: 20px;
+    padding-left: 5px;
+    width: 100%;
+    outline: none;
+    background-color: transparent;
+}
+ 
+.buttonSearch,.iconCreate,.buttonFilter button{
+    margin: .2rem 0.25rem;
+    padding: 0.4rem 0.2rem;
+    border: none;
+    border-radius: 0.4rem;
+    background: linear-gradient(
+    180deg,
+    rgb(158, 133, 95) 0%,
+    rgba(71, 35, 15, 0.71) 100%
+    );
+    color: rgba(231, 227, 216, 0.747);
+    font-size: 16px;
+    cursor: pointer;
+    }
+.buttonFilter{
+        text-decoration: none;
+    }
+
+.iconCreate:hover,.buttonSearch:hover,.buttonFilter:hover,.selectFilter:hover,#by:hover,#type:hover{
+        transform: scale(1.025, 1.025);
+        filter: drop-shadow(0 0 12px white);
+    }
+.formSubmit {
+    grid-area:formSubmit;
+    display: flex;
+    align-items: center;
+    margin-bottom:5px;
+    margin-top: 2px;
+    padding: .25rem;
+    border-radius: 0.25rem;
+    box-shadow: -2px 2px 20px rgb(230 91 20);
+    color: rgba(231, 227, 216, 0.747);
+    font-size: 1.25rem;
+    width: 23.8rem;
+}
+.formSubmit:before {
+    transform: scaleX(0);
+    background: rgb(242 119 19 / 83%);
+    transform-origin: center;
+    transform-origin: left;
+    transition: transform .25s;
+    top:73px;
+    left: 5px;
+    width: 310px;
+    height: 2px;
+    position: absolute;
+    content: "";
+}
+.formSubmit:focus-within::before {
+    transform: scaleX(1);
+}
+.labelCheck {
+    display: inline-block;
+    margin: 0.05rem 0.2rem 0.05rem 0.2rem;
+    font-size: smaller;
+    padding: 0.1rem 0.3rem;
+    border-radius: 15px;
+    background-color: rgba(235, 98, 35, 0.459);
+    width: fit-content;
+  }
+.input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: bold;
+    color: rgba(231, 227, 216, 0.747);
+    padding-left: 10px;
+    padding-top: 4px;
+}
+.filter , .formFilters{
+    right:0rem;
+    height: 26px;
+    position:unset;
+    display: flex;
+    padding-left:1rem;
+}
+.filter{
+    width: 10rem;
+}
+.selectFilter {
+    position: unset;
+    text-shadow: 0 0 1px rgba(235, 185, 169, 0.479);
+    font-size: x-small;
+    text-align: center;
+    width: 6rem;
+    height: 1.3rem;
+    background: linear-gradient( 180deg, rgb(158, 133, 95) 0%, rgba(71, 35, 15, 0.71) 100% );
+    color: rgba(231, 227, 216, 0.747);
+    filter: drop-shadow(0px 0px 6px rgba(0, 0, 0, 0.25));
+    padding: 2px;
+    cursor: pointer;
+}
+.iconFilter{
+    position: unset;
+    height: 1rem;
+    padding: 5px 0px 5px 20px;
+}
+.selectFilter option {
+    background-color: #703711c7;
+  }
+.listCheck{
+    display: flex;
+    flex-direction:column;
+    box-shadow: -2px 2px 20px rgb(36, 36, 36);
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    font-size:smaller;
+    height: auto;
+    width: 9rem;
+    color: rgba(231, 227, 216, 0.747); 
+    border: 1px solid rgba(119, 23, 23, 0.692);
+    border-radius:  5px;
+}
+.selectOptions {
+    position: fixed;
+    top: 7.5rem;
+    left: 0;
+    height:1.6rem;
+    min-width: 450px;
+    width: 100%;
+    text-shadow: 0 0 1px rgba(235, 185, 169, 0.479);
+    backdrop-filter: blur(2rem);
+    color: rgba(231, 227, 216, 0.747);
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);    
+    }
+
+.labelSelect,.labelType,.labelBy {
+    min-width: 75px;
+    display:flex;
+    justify-content:flex-end;
+    align-items: center;
+    font-size: small;
+    text-align:right;
+    padding-right: .5rem;
+    color: rgba(231, 227, 216, 0.747);
+    }
+
+.by,.type, select{
+    height: 1.3rem;
+    margin: 3px 0px 1px 0px;
+    border-radius:  5px;
+    font-size: small;
+    background: linear-gradient(
+        180deg,
+        rgb(158, 133, 95) 0%,
+        rgba(71, 35, 15, 0.71) 100%
+    );
+    color: rgba(231, 227, 216, 0.747);
+    cursor: pointer;
+}
+.by,.type option{
+    background-color: #703711c7;
+}
+.type,.labelType{
+    display:none;
+
+}

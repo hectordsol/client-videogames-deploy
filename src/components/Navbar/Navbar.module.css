@@ -1,0 +1,30 @@
+.navbar {
+    position:fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px;
+    box-sizing: border-box;
+    height: 2.3rem;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: -2px 2px 20px rgb(36, 36, 36);
+    z-index: 1030;
+    background-image: url("../../Images/background1.jpg"); 
+}
+
+.navbar nav {
+    height: 100%;
+
+}
+#logo{
+    background: linear-gradient(180deg,rgba(241,238,234,.712),rgba(180,168,155,.45098039215686275));
+    border: 1.5px solid #a8a3a3;
+    border-radius: 100rem;
+    margin-right: 1rem;
+}
+#logo:hover{
+        transform: scale(1.025, 1.025);
+        filter: drop-shadow(0 0 12px white);
+}
