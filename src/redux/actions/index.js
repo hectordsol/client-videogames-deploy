@@ -1,6 +1,6 @@
 import axios from 'axios';
 //const URL_vieja = "https://hds-videogame-app.herokuapp.com";
-const URL = "api-videogame-deploy-production.up.railway.app";
+const URL = "https://api-videogame-deploy-production.up.railway.app";
 
 
 export const SEARCH_VIDEOGAMES = 'SEARCH_VIDEOGAMES';
