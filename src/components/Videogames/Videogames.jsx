@@ -19,8 +19,8 @@ export default function Videogames() {
   const start = end - videogamesForPage;
   const currentVideogames = videogames?.slice(start, end);
   
-  // useEffect(() => {
-  // }, [videogames]);
+   useEffect(() => {
+   }, [videogames]);
 return (
         <div className={style.container}>
           {loading ? (
