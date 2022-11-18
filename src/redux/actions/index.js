@@ -26,7 +26,6 @@ export function changePage(payload) {
     return async (dispatch) =>{
     try{
         const videogames = await axios.get(`${URL}/api/videogames?name=${name}`);
-        console.log(videogames.data.length);
         return dispatch({ type: SEARCH_VIDEOGAMES, payload: videogames.data , loading: false, submit: name});
     } catch(error){
         return dispatch({ type: SEARCH_VIDEOGAMES, payload: [] , loading: false, submit: "Not Found"});
