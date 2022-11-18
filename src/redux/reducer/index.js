@@ -114,7 +114,7 @@ export default function reducer(state = initialState, action) {
                 platforms: action.payload,
             };
     case SORT_TYPE:  //Asc, desc
-        var videogamesSortedType = state.videogamesToShow;
+        var videogamesSortedType = [...state.videogamesToShow];
             videogamesSortedType = Sort(videogamesSortedType, state.sortBy, action.payload);
             return {
                 ...state,
@@ -132,10 +132,10 @@ export default function reducer(state = initialState, action) {
                 sortBy: action.payload
             };
     case  FILTER_BY_GENRES : {
-        const withoutFilter = state.videogames;
-        console.log("payload ",action.payload);
+        const withoutFilter = [ ...state.videogamesToShow];
+        console.log("payload",action.payload)
         const filtered =
-          action.payload === "all"
+          action.payload === "none"
             ? withoutFilter
             : withoutFilter.filter((videogame) => videogame.genres.includes(action.payload));
         return {

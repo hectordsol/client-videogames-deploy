@@ -119,7 +119,7 @@ useEffect(() => {
                     <div className={style.filter}>
                         <div className={style.formFilters}>
                             <select onChange={filterGenres} className={style.selectFilter}>
-                            <option value="all"> Without filter</option>
+                            <option value="none"> Without filter</option>
                             {genres?.map((g) => (
                               <option key={g.name} value={g.name}>
                                 {" "}
