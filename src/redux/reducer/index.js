@@ -111,6 +111,7 @@ export default function reducer(state = initialState, action) {
             };
         case  FILTER_STORE: 
         filtered = state.videogames;
+        console.log("store ",state.show);
         filtered = action.payload === "all"    //all,api,db
         ? filtered : filtered.filter((videogame) => videogame.source===action.payload);
         filtered = state.show.filter ==='none'
@@ -125,6 +126,7 @@ export default function reducer(state = initialState, action) {
         
     case SORT_TYPE:  //Asc, desc
         filtered = state.videogames;
+        console.log("type ",state.show);
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = state.show.filter ==='none'
@@ -138,6 +140,7 @@ export default function reducer(state = initialState, action) {
             
     case SORT_BY:  //unsorted or name or rating
         filtered = state.videogames;
+        console.log("by ",state.show);
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = state.show.filter ==='none'
@@ -152,6 +155,7 @@ export default function reducer(state = initialState, action) {
     
     case  FILTER_BY_GENRES : 
         filtered = state.videogames;
+        console.log("generes ",state.show);
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = action.payload ==='none'
