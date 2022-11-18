@@ -69,6 +69,7 @@ const initialState = {
 };
 
 export default function reducer(state = initialState, action) {
+    let filtered;
     switch (action.type) {
     case SEARCH_VIDEOGAMES: 
         return {
@@ -108,8 +109,8 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 loading: action.payload,
             };
-        case  FILTER_STORE: {
-        let filtered = state.videogames;
+        case  FILTER_STORE: 
+        filtered = state.videogames;
         filtered = action.payload === "all"    //all,api,db
         ? filtered : filtered.filter((videogame) => videogame.source===action.payload);
         filtered = state.show.filter ==='none'
@@ -121,9 +122,9 @@ export default function reducer(state = initialState, action) {
                 videogamesToShow: filtered,
                 show: {...state.show, source: action.payload} //all, api, db
             };
-        }
-    case SORT_TYPE: { //Asc, desc
-        let filtered = state.videogames;
+        
+    case SORT_TYPE:  //Asc, desc
+        filtered = state.videogames;
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = state.show.filter ==='none'
@@ -134,23 +135,23 @@ export default function reducer(state = initialState, action) {
                 videogamesToShow: filtered,
                 show: {...state.show, orderType: action.payload}
             };      
-        }    
-    case SORT_BY:{  //name or rating
-        let filtered = state.videogames;
+            
+    case SORT_BY:  //unsorted or name or rating
+        filtered = state.videogames;
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = state.show.filter ==='none'
         ?filtered : filtered.filter((videogame)=> videogame.genres.includes(state.show.filter));
-        filtered=action.payload==='unsorted'
+        filtered = action.payload==='unsorted'
         ?filtered : Sort(filtered, action.payload, state.show.orderType);
             return {
                 ...state,
                 videogamesToShow: filtered,
                 show: {...state.show, by: action.payload}
             };
-    }
-    case  FILTER_BY_GENRES : {
-        let filtered = state.videogames;
+    
+    case  FILTER_BY_GENRES : 
+        filtered = state.videogames;
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = action.payload ==='none'
@@ -162,7 +163,7 @@ export default function reducer(state = initialState, action) {
                 videogamesToShow: filtered,
                 show: {...state.show, filter: action.payload}
             };  
-    };
+    
     default: return {...state};
     }
 }
