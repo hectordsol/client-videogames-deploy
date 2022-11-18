@@ -94,7 +94,7 @@ export function sortBy(payload) { //unsorted - name - rating
 export function filterByGenres(genre) {
     return {
         type: FILTER_BY_GENRES,
-        payload: genre // 
+        payload: genre 
     }
 };
 export function createVideogame (payload) { //Post a new videogame

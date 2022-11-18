@@ -61,6 +61,7 @@ function hideType() {
 }
 function handleType(e){
     e.preventDefault();
+    dispatch(loadingVideogames(true));
     dispatch(sortType(e.target.value));//ejecuto las acciones sortType (Asc o Des) y changePage a 1
     dispatch(changePage(1));
 };

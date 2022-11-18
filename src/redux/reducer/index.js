@@ -79,11 +79,10 @@ export default function reducer(state = initialState, action) {
             loading: action.loading,
             submit: action.submit,
         };
-    case  CREATE_VIDEOGAME: {
+    case  CREATE_VIDEOGAME: 
             return {
                 ...state,
             }
-        }
     case GET_VIDEOGAME_DETAIL: 
             return {
                 ...state,
@@ -99,17 +98,17 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 platforms: action.payload,
             };
-            case CHANGE_PAGE: 
+    case CHANGE_PAGE: 
             return {
                 ...state,
                 currentPage: action.payload,
             };    
-        case LOADING_VIDEOGAMES: 
+    case LOADING_VIDEOGAMES: 
             return {
                 ...state,
                 loading: action.payload,
             };
-        case  FILTER_STORE: 
+    case  FILTER_STORE: 
         filtered = state.videogames;
         console.log("store ",state.show);
         filtered = action.payload === "all"    //all,api,db
@@ -124,20 +123,6 @@ export default function reducer(state = initialState, action) {
                 show: {...state.show, source: action.payload} //all, api, db
             };
         
-    case SORT_TYPE:  //Asc, desc
-        filtered = state.videogames;
-        console.log("type ",state.show);
-        filtered = state.show.source === "all"  //all, api, db
-        ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
-        filtered = state.show.filter ==='none'
-        ? filtered: filtered.filter((videogame)=> videogame.genres.includes(state.show.filter));
-        filtered = Sort(filtered, state.show.by, action.payload);
-            return {
-                ...state,
-                videogamesToShow: filtered, loading: false,
-                show: {...state.show, orderType: action.payload}
-            };      
-            
     case SORT_BY:  //unsorted or name or rating
         filtered = state.videogames;
         console.log("by ",state.show,"payload ",action.payload);
@@ -153,7 +138,21 @@ export default function reducer(state = initialState, action) {
                 show: {...state.show, by: action.payload}
             };
     
-    case  FILTER_BY_GENRES : 
+    case SORT_TYPE:  //Asc, desc
+        filtered = state.videogames;
+        console.log("type ",state.show);
+        filtered = state.show.source === "all"  //all, api, db
+        ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
+        filtered = state.show.filter ==='none'
+        ? filtered: filtered.filter((videogame)=> videogame.genres.includes(state.show.filter));
+        filtered = Sort(filtered, state.show.by, action.payload);
+            return {
+                ...state,
+                videogamesToShow: filtered, loading: false,
+                show: {...state.show, orderType: action.payload}
+            };      
+                
+        case  FILTER_BY_GENRES : 
         filtered = state.videogames;
         console.log("generes ",state.show);
         filtered = state.show.source === "all"  //all, api, db
