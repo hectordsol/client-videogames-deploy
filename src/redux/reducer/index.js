@@ -133,6 +133,7 @@ export default function reducer(state = initialState, action) {
             };
     case  FILTER_BY_GENRES : {
         const withoutFilter = state.videogames;
+        console.log("payload ",action.payload);
         const filtered =
           action.payload === "all"
             ? withoutFilter
