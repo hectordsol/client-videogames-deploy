@@ -109,7 +109,7 @@ export default function reducer(state = initialState, action) {
                 loading: action.payload,
             };
         case  FILTER_STORE: {
-        const filtered = state.videogames;
+        let filtered = state.videogames;
         filtered = action.payload === "all"    //all,api,db
         ? filtered : filtered.filter((videogame) => videogame.source===action.payload);
         filtered = state.show.filter ==='none'
@@ -123,7 +123,7 @@ export default function reducer(state = initialState, action) {
             };
         }
     case SORT_TYPE: { //Asc, desc
-        const filtered = state.videogames;
+        let filtered = state.videogames;
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = state.show.filter ==='none'
@@ -136,7 +136,7 @@ export default function reducer(state = initialState, action) {
             };      
         }    
     case SORT_BY:{  //name or rating
-        const filtered = state.videogames;
+        let filtered = state.videogames;
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = state.show.filter ==='none'
@@ -150,7 +150,7 @@ export default function reducer(state = initialState, action) {
             };
     }
     case  FILTER_BY_GENRES : {
-        const filtered = state.videogames;
+        let filtered = state.videogames;
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = action.payload ==='none'
