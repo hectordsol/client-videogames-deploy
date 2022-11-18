@@ -140,7 +140,7 @@ export default function reducer(state = initialState, action) {
             
     case SORT_BY:  //unsorted or name or rating
         filtered = state.videogames;
-        console.log("by ",state.show);
+        console.log("by ",state.show,"payload ",action.payload);
         filtered = state.show.source === "all"  //all, api, db
         ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
         filtered = state.show.filter ==='none'
