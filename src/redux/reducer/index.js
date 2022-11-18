@@ -152,7 +152,7 @@ export default function reducer(state = initialState, action) {
                 show: {...state.show, orderType: action.payload}
             };      
                 
-        case  FILTER_BY_GENRES : 
+    case  FILTER_BY_GENRES : 
         filtered = state.videogames;
         console.log("generes ",state.show);
         filtered = state.show.source === "all"  //all, api, db

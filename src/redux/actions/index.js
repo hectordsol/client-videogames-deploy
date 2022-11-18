@@ -73,12 +73,6 @@ export function getPlatforms() {
         })
     }
 };
-export function sortType(sortType) { //ascending or descending
-    return {
-        type: SORT_TYPE,
-        payload: sortType // asc o desc
-    };
-};
 export function showStore(payload) { //All - API - DB
     return {
         type: FILTER_STORE,
@@ -90,6 +84,12 @@ export function sortBy(payload) { //unsorted - name - rating
         type: SORT_BY,
         payload: payload 
     }
+};
+export function sortType(payload) { //ascending or descending
+    return {
+        type: SORT_TYPE,
+        payload: payload 
+    };
 };
 export function filterByGenres(genre) {
     return {
