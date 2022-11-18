@@ -114,7 +114,7 @@ export default function reducer(state = initialState, action) {
                 platforms: action.payload,
             };
     case SORT_TYPE:  //Asc, desc
-        var videogamesSortedType = [...state.videogamesToShow];
+        var videogamesSortedType = state.videogamesToShow;
             videogamesSortedType = Sort(videogamesSortedType, state.sortBy, action.payload);
             return {
                 ...state,
