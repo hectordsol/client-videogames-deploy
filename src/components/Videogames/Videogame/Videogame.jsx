@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import style from "./Videogame.module.css";
 
-function Videogame({ id, name, image, rating, genres, db }) {
+function Videogame({ id, name, image, rating, genres, source }) {
 
     return (
       <div className={style.videogame}> 
         {
-        db===true?
+        source==="db"?
           <div className={style.edit}><button className={style.db}>DB</button></div>
         :null
         }

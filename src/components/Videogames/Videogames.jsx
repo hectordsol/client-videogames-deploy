@@ -36,7 +36,7 @@ return (
                   image={vg.image}
                   rating={vg.rating}
                   genres={vg.genres}
-                  db={vg.db}
+                  source={vg.source}
                   />
                   )
               }
