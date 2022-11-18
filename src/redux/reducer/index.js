@@ -120,7 +120,7 @@ export default function reducer(state = initialState, action) {
         ?filtered: Sort(filtered, state.show.by, state.show.orderType);
             return {
                 ...state,
-                videogamesToShow: filtered,
+                videogamesToShow: filtered, loading: false,
                 show: {...state.show, source: action.payload} //all, api, db
             };
         
@@ -134,7 +134,7 @@ export default function reducer(state = initialState, action) {
         filtered = Sort(filtered, state.show.by, action.payload);
             return {
                 ...state,
-                videogamesToShow: filtered,
+                videogamesToShow: filtered, loading: false,
                 show: {...state.show, orderType: action.payload}
             };      
             
@@ -149,7 +149,7 @@ export default function reducer(state = initialState, action) {
         ?filtered : Sort(filtered, action.payload, state.show.orderType);
             return {
                 ...state,
-                videogamesToShow: filtered,
+                videogamesToShow: filtered, loading: false,
                 show: {...state.show, by: action.payload}
             };
     
@@ -164,7 +164,7 @@ export default function reducer(state = initialState, action) {
         ?filtered : Sort(filtered, state.show.by, state.show.orderType);
             return {
                 ...state,
-                videogamesToShow: filtered,
+                videogamesToShow: filtered, loading: false,
                 show: {...state.show, filter: action.payload}
             };  
     

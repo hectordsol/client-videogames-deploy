@@ -38,6 +38,7 @@ function Home () {
   }
   function handleBy(e) {
     e.preventDefault();
+    dispatch(loadingVideogames(true));
     if (e.target.value==="unsorted") hideType();// si selecciono la opcion sin ordenar
     else showType();//si elijo alguna de las opciones Order By
     dispatch(sortBy(e.target.value));//ejecuto las acciones sortBy y changePage a 1
@@ -45,6 +46,7 @@ function Home () {
 };
 function handleStore(e) {
   e.preventDefault();
+  dispatch(loadingVideogames(true));
   dispatch(showStore(e.target.value));//ejecuto las acciones showStore (all o api o db) y changePage a 1
   dispatch(changePage(1));
 };
@@ -64,6 +66,7 @@ function handleType(e){
 };
 const filterGenres = (e) => {
   e.preventDefault();
+  dispatch(loadingVideogames(true));
   dispatch(filterByGenres(e.target.value));
   dispatch(changePage(1));
 };
