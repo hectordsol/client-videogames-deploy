@@ -63,9 +63,7 @@ const initialState = {
     videogameDetail: {},
     genres: [],
     platforms: [],
-    storeType: 'all',
-    sortBy: 'unsorted',
-    sortType: 'asc',
+    show: {source:'all',by:'unsorted',orderType:'asc',filter:'none'},
     loading: false,
     submit:'',
 };
@@ -85,19 +83,6 @@ export default function reducer(state = initialState, action) {
                 ...state,
             }
         }
-    case  FILTER_STORE: {
-        const withoutFilter = [ ...state.videogames];
-        const filtered = action.payload === "all"
-        ? withoutFilter
-        : withoutFilter.filter((videogame) => videogame.source===action.payload);
-        console.log("sort by ",state.sortBy);
-        console.log("sort type ",state.sortType);
-            return {
-                ...state,
-                videogamesToShow: filtered,
-                storeType: action.payload
-            };
-        }
     case GET_VIDEOGAME_DETAIL: 
             return {
                 ...state,
@@ -113,46 +98,71 @@ export default function reducer(state = initialState, action) {
                 ...state,
                 platforms: action.payload,
             };
-    case SORT_TYPE:  //Asc, desc
-        var videogamesSortedType = [...state.videogamesToShow];
-            videogamesSortedType = Sort(videogamesSortedType, state.sortBy, action.payload);
+            case CHANGE_PAGE: 
             return {
                 ...state,
-                videogamesToShow: videogamesSortedType,
-                sortType: action.payload
-            };          
-    case SORT_BY:  //name or rating
-        const videogames = [ ...state.videogamesToShow];
-        const sortedBy = action.payload === "unsorted" 
-            ? videogames
-            :Sort(videogames, action.payload, state.sortType);
+                currentPage: action.payload,
+            };    
+        case LOADING_VIDEOGAMES: 
             return {
                 ...state,
-                videogamesToShow: sortedBy,
-                sortBy: action.payload
+                loading: action.payload,
             };
+        case  FILTER_STORE: {
+        const filtered = state.videogames;
+        filtered = action.payload === "all"    //all,api,db
+        ? filtered : filtered.filter((videogame) => videogame.source===action.payload);
+        filtered = state.show.filter ==='none'
+        ?filtered: filtered.filter((videogame)=> videogame.genres.includes(state.show.filter));
+        filtered = state.show.by ==='unsorted'  //unsorted,name,rating
+        ?filtered: Sort(filtered, state.show.by, state.show.orderType);
+            return {
+                ...state,
+                videogamesToShow: filtered,
+                show: {...state.show, source: action.payload} //all, api, db
+            };
+        }
+    case SORT_TYPE: { //Asc, desc
+        const filtered = state.videogames;
+        filtered = state.show.source === "all"  //all, api, db
+        ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
+        filtered = state.show.filter ==='none'
+        ? filtered: filtered.filter((videogame)=> videogame.genres.includes(state.show.filter));
+        filtered = Sort(filtered, state.show.by, action.payload);
+            return {
+                ...state,
+                videogamesToShow: filtered,
+                show: {...state.show, orderType: action.payload}
+            };      
+        }    
+    case SORT_BY:{  //name or rating
+        const filtered = state.videogames;
+        filtered = state.show.source === "all"  //all, api, db
+        ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
+        filtered = state.show.filter ==='none'
+        ?filtered : filtered.filter((videogame)=> videogame.genres.includes(state.show.filter));
+        filtered=action.payload==='unsorted'
+        ?filtered : Sort(filtered, action.payload, state.show.orderType);
+            return {
+                ...state,
+                videogamesToShow: filtered,
+                show: {...state.show, by: action.payload}
+            };
+    }
     case  FILTER_BY_GENRES : {
-        const withoutFilter = [ ...state.videogamesToShow];
-        console.log("payload",action.payload)
-        const filtered =
-          action.payload === "none"
-            ? withoutFilter
-            : withoutFilter.filter((videogame) => videogame.genres.includes(action.payload));
-        return {
-          ...state,
-          videogamesToShow: filtered,
-        };  
+        const filtered = state.videogames;
+        filtered = state.show.source === "all"  //all, api, db
+        ? filtered : filtered.filter((videogame) => videogame.source===state.show.source);
+        filtered = action.payload ==='none'
+        ?filtered : filtered.filter((videogame)=> videogame.genres.includes(action.payload));
+        filtered=state.show.by==='unsorted'
+        ?filtered : Sort(filtered, state.show.by, state.show.orderType);
+            return {
+                ...state,
+                videogamesToShow: filtered,
+                show: {...state.show, filter: action.payload}
+            };  
     };
-    case CHANGE_PAGE: 
-        return {
-            ...state,
-            currentPage: action.payload,
-        };    
-    case LOADING_VIDEOGAMES: 
-        return {
-            ...state,
-            loading: action.payload,
-        };
-     default: return {...state};
+    default: return {...state};
     }
 }
