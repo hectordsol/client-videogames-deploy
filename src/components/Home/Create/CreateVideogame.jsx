@@ -188,8 +188,8 @@ return (
                   <label key="label5" className={style.labels}>Image:</label>
                   <input key="input5" className={style.titleInput} autoComplete="off" 
                     type="text" name="image" placeholder='URL image (optional)' onChange={handleInputChange} value={input.image}/>
-              </div>{errors.image && (<span className={style.msgs}>{errors.image}</span>)}
-              
+              </div>
+              {/* {errors.image && (<span className={style.msgs}>{errors.image}</span>)} */}
               {render[0] &&
                       <div id={style.videogamecreated}>
                       
